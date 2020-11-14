@@ -1,10 +1,18 @@
-version: '3.4'
+version: '3'
 
 services:
   hellofargate:
-    image: hellofargate
+    # image: hellofargate
+    image: amazon/amazon-ecs-sample
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 5000:5000
+    logging:
+      driver: awslogs
+      options: 
+        awslogs-group: tutorial
+        awslogs-region: us-west-2
+        awslogs-stream-prefix: web
+    # command: ["gunicorn", "--bind", "0.0.0.0:5000", "hello_app.app:app"]
