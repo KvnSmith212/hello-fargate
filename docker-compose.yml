@@ -2,7 +2,7 @@ version: '3'
 
 services:
   hellofargate:
-    image: hellofargate
+    image: kvnsmith212/hellofargate
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -14,4 +14,4 @@ services:
         awslogs-group: tutorial
         awslogs-region: us-west-2
         awslogs-stream-prefix: web
-    # command: ["gunicorn", "--bind", "0.0.0.0:5000", "hello_app.app:app"]
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "hello_app.app:app"]
